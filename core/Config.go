@@ -1,15 +1,15 @@
 package core
 
 type Config struct {
-	Endpoints []interface{}
+	Endpoints []interface{} `json:"endpoints"`
 }
 
 type Endpoint struct {
-	Path string
+	Path string `json:"path"`
 }
 
 type CalendarConfig struct {
 	Endpoint
-	GoogleCalendars       []string
-	CountOfUpcomingEvents int
+	GoogleCalendars       []string `json:"googleCalendars"`
+	CountOfUpcomingEvents int      `json:"countOfUpcomingEvents"`
 }
