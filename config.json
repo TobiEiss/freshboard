@@ -1,0 +1,11 @@
+{
+    "endpoints":[
+       {
+          "path":"/api/v0/calendar",
+          "googleCalendars":[
+             "http://www.google.com/calendar/ical/bg.bulgarian%23holiday%40group.v.calendar.google.com/public/basic.ics"
+          ],
+          "countOfUpcomingEvents":5
+       }
+    ]
+ }
