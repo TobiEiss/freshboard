@@ -19,7 +19,7 @@ func main() {
 	router.File("/config.json", "config.json")
 	router.File("/", "freeboard/index.html")
 
-	router.POST("/icscalendar", plugins.UpcomingEvents)
+	router.GET("/icscalendar", plugins.UpcomingEvents)
 
 	// start router
 	log.Println("start router..")

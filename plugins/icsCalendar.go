@@ -1,22 +1,31 @@
 package plugins
 
 import (
+	"errors"
+	"log"
 	"net/http"
+	"strconv"
 
 	ics "github.com/TobiEiss/ics-golang"
 	"github.com/labstack/echo"
 )
 
-// ICSCalendar is the trsuct for this module
-type ICSCalendar struct {
-	CountOfUpcomingEvents int    `json:"countOfUpcomingEvents"`
-	Calendar              string `json:"calendar"`
-}
+const (
+	CountOfUpcomingEvents = "count"
+	Calendar              = "calendar"
+)
 
 // UpcomingEvents returns upcoming events
 func UpcomingEvents(context echo.Context) error {
-	icsCalendar := new(ICSCalendar)
-	if err := context.Bind(icsCalendar); err != nil {
+	count := context.Request().Header.Get(CountOfUpcomingEvents)
+	calendar := context.Request().Header.Get(Calendar)
+	if count == "" || calendar == "" {
+		return errors.New("set header count and calendar")
+	}
+
+	// set count to int
+	countInt, err := strconv.Atoi(count)
+	if err != nil {
 		return err
 	}
 
@@ -24,14 +33,15 @@ func UpcomingEvents(context echo.Context) error {
 	ics.RepeatRuleApply = true
 	parser := ics.New()
 	inputChan := parser.GetInputChan()
-	inputChan <- icsCalendar.Calendar
+	inputChan <- calendar
 	parser.Wait()
 
 	// get all calendars in this parser
 	cal, err := parser.GetCalendars()
 	if err != nil {
+		log.Println(err)
 		return context.JSON(http.StatusInternalServerError, err)
 	}
 
-	return context.JSON(http.StatusOK, cal[0].GetUpcomingEvents(icsCalendar.CountOfUpcomingEvents))
+	return context.JSON(http.StatusOK, cal[0].GetUpcomingEvents(countInt))
 }

@@ -1,0 +1,52 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": "3",
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Events",
+						"size": "regular",
+						"value": "datasources[\"cal\"][0][\"summary\"]",
+						"animate": true
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "cal",
+			"type": "JSON",
+			"settings": {
+				"url": "http://localhost:8080/icscalendar",
+				"use_thingproxy": true,
+				"refresh": 60,
+				"method": "GET",
+				"body": "",
+				"headers": [
+					{
+						"name": "count",
+						"value": "5"
+					},
+					{
+						"name": "calendar",
+						"value": "https://www.google.com/calendar/ical/yordanpulov%40gmail.com/private-81525ac0eb14cdc2e858c15e1b296a1c/basic.ics"
+					}
+				]
+			}
+		}
+	],
+	"columns": 3
+}
