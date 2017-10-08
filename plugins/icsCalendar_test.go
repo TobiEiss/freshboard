@@ -1,4 +1,4 @@
-package freeboardBackend_test
+package plugins_test
 
 import (
 	"io/ioutil"
