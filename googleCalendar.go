@@ -3,7 +3,7 @@ package freeboardBackend
 import (
 	"net/http"
 
-	ics "github.com/PuloV/ics-golang"
+	ics "github.com/TobiEiss/ics-golang"
 	"github.com/labstack/echo"
 )
 
@@ -20,6 +20,7 @@ func InitGoogleCalendar(countOfUpcomingEvents int, googleCalendars []string) *Go
 // UpcomingEvents returns upcoming events
 func (googleCalendar *GoogleCalendar) UpcomingEvents(context echo.Context) error {
 	// parse calendar
+	ics.RepeatRuleApply = true
 	parser := ics.New()
 	inputChan := parser.GetInputChan()
 	for _, calendarAddress := range googleCalendar.googleCalendars {
