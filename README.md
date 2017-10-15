@@ -15,3 +15,10 @@ RaspberryPi-config
 @sh /home/pi/freshboard/autostart.sh
 
 ```
+
+Without mouse  
+`sudo apt-get install unclutter`  
+
+```
+@unclutter
+```
