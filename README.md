@@ -13,6 +13,9 @@ WIP: freeboard backend
     - if you have installed go: `go run server.go`
     - browse: `http://localhost:8080/#source=config.json`
 
+### build Dockerfile
+- Raspberrypi (rasbian): `docker build -t freshboard -f Dockerfile-raspberrypi .`
+
 ## RaspberryPi-config
 `/home/pi/.config/lxsession/LXDE-pi/autostart`
 
