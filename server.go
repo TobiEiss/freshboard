@@ -20,6 +20,7 @@ func main() {
 	router.File("/", "freeboard/index.html")
 
 	router.GET("/icscalendar", plugins.UpcomingEvents)
+	router.GET("/kraken", plugins.KrakenTickerInfo)
 
 	// start router
 	log.Println("start router..")
