@@ -3,7 +3,17 @@
 
 WIP: freeboard backend
 
-RaspberryPi-config
+## Setup
+- create your personal new repository
+- add this repository as remote `git remote add freshboard git@github.com:TobiEiss/freshboard.git`
+- pull from this remote `git pull freshboard master --allow-unrelated-histories`
+- init git submodules (the original freeboard) `git submodule init`
+- update git submodules (the original freeboard) `git submodule update`
+- (optional) test installation:
+    - if you have installed go: `go run server.go`
+    - browse: `http://localhost:8080/#source=config.json`
+
+## RaspberryPi-config
 `/home/pi/.config/lxsession/LXDE-pi/autostart`
 
 ```
